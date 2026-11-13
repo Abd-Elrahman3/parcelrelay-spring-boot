@@ -1,0 +1,20 @@
+@base = http://localhost:8080
+@token = REPLACE_WITH_LOCAL_TEST_TOKEN
+
+# Target examples; routes are learner work and UUIDs must be replaced.
+
+### Request shipment (carrier calls must use a local mock)
+POST {{base}}/api/v1/shipments
+Authorization: Bearer {{token}}
+Idempotency-Key: shipment-example-001
+Content-Type: application/json
+
+{"destination":"12 Example Street, Test City"}
+
+### Negative signature case: must return 401 and change nothing
+POST {{base}}/api/v1/carrier-events
+X-Webhook-Timestamp: 0
+X-Webhook-Signature: v1=invalid
+Content-Type: application/json
+
+{"eventId":"00000000-0000-0000-0000-000000000001","shipmentId":"00000000-0000-0000-0000-000000000002","sequence":1,"status":"DISPATCHED"}

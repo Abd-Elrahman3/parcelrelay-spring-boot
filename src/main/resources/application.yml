@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: parcelrelay
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/parcelrelay}
+    username: ${DB_USER:learning}
+    password: ${DB_PASSWORD:learning_local_only}
+  flyway:
+    enabled: true
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/parcelrelay}
+    user: ${DB_USER:learning}
+    password: ${DB_PASSWORD:learning_local_only}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USER:learning}
+    password: ${RABBIT_PASSWORD:learning_local_only}
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 20
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+# TODO: D4 configure JWT issuer/audience and endpoint policies in SecurityConfig where required.
+# TODO: D7 protect metrics and configure readiness dependency checks.

@@ -1,0 +1,78 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "ParcelRelay Events",
+    "version": "1.0.0"
+  },
+  "servers": {
+    "local": {
+      "host": "localhost:5672",
+      "protocol": "amqp"
+    }
+  },
+  "channels": {
+    "events": {
+      "address": "shipment.created.v1",
+      "messages": {
+        "DomainEvent": {
+          "$ref": "#/components/messages/DomainEvent"
+        }
+      }
+    }
+  },
+  "operations": {
+    "publishEvent": {
+      "action": "send",
+      "channel": {
+        "$ref": "#/channels/events"
+      }
+    }
+  },
+  "components": {
+    "messages": {
+      "DomainEvent": {
+        "name": "DomainEvent",
+        "contentType": "application/json",
+        "payload": {
+          "type": "object",
+          "required": [
+            "eventId",
+            "aggregateId",
+            "type",
+            "schemaVersion",
+            "occurredAt",
+            "correlationId",
+            "payload"
+          ],
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "aggregateId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": {
+              "type": "string"
+            },
+            "schemaVersion": {
+              "type": "integer",
+              "const": 1
+            },
+            "occurredAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "correlationId": {
+              "type": "string"
+            },
+            "payload": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}
