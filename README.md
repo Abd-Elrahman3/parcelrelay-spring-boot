@@ -14,7 +14,7 @@ This is original learning material organized like the supplied `substream.zip`: 
 
 ### 2.1 Milestones
 
-Do projects in order. Prerequisite: complete D7 of [SeatLock](https://github.com/Abd-Elrahman3/02-seatlock-spring-boot) and explain its failure drills.
+Do projects in order. Prerequisite: complete D7 of [SeatLock](https://github.com/Abd-Elrahman3/seatlock-spring-boot) and explain its failure drills.
 Every milestone is required. Advanced requirements are part of completion, not optional stretch goals. M1–M3 establish the model, database and transactions; D4–D7 add contracts, difficult behavior, failure recovery and operation.
 
 | Milestone | Goal | Branch | Guide |

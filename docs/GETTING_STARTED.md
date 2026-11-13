@@ -7,8 +7,8 @@ Java 21, Git, Docker Engine/Desktop with Compose v2, Python 3.10+ for the gate. 
 ## 2. Clone and read
 
 ```bash
-git clone https://github.com/Abd-Elrahman3/03-parcelrelay-spring-boot.git
-cd 03-parcelrelay-spring-boot
+git clone https://github.com/Abd-Elrahman3/parcelrelay-spring-boot.git
+cd parcelrelay-spring-boot
 git switch -c feature/m1-domain
 ```
 
